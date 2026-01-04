@@ -80,4 +80,4 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 ## Author
 
-Ali Shiakh Qasem
+Ali Shaikh Qasem
