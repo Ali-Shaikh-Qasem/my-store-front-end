@@ -20,4 +20,8 @@ export class ProductListComponent implements OnInit {
       this.products = data;
     });
   }
+
+  onItemAdded(event: { product: Product, quantity: number }): void {
+    console.log(`Product added to cart: ${event.product.name}, Quantity: ${event.quantity}`);
+  }
 }

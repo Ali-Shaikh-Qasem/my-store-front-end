@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +13,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductItemComponent {
   @Input() product!: Product;
+  @Output() itemAdded = new EventEmitter<{ product: Product, quantity: number }>();
   selectedQuantity: number = 1;
 
   constructor(private cartService: CartService) { }
@@ -24,7 +25,9 @@ export class ProductItemComponent {
   }
 
   addToCart(): void {
-    this.cartService.addToCart(this.product, Number(this.selectedQuantity));
+    const quantity = Number(this.selectedQuantity);
+    this.cartService.addToCart(this.product, quantity);
+    this.itemAdded.emit({ product: this.product, quantity: quantity });
     alert(`Added ${this.selectedQuantity} ${this.product.name}(s) to cart!`);
     this.selectedQuantity = 1;
   }

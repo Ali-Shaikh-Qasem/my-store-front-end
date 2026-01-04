@@ -33,6 +33,10 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(productId: number): void {
+    const item = this.cartItems.find(item => item.product.id === productId);
     this.cartService.removeFromCart(productId);
+    if (item) {
+      alert(`${item.product.name} has been removed from your cart!`);
+    }
   }
 }
