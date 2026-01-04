@@ -1,8 +1,31 @@
 # MyStore
 
+MyStore is an e-commerce Angular application that allows users to browse products, add items to their cart, and complete the checkout process. The application features a product listing page, product detail pages, a shopping cart, and a checkout confirmation flow.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
 
-## Development server
+## Features
+
+- Product listing with images, names, and prices
+- Product detail pages with quantity selection
+- Shopping cart functionality
+- Add, remove, and update quantities in cart
+- Checkout process with form validation
+- Order confirmation page
+
+## Installation
+
+1. Clone the repository
+2. Navigate to the project directory:
+   ```bash
+   cd my-store
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+## Launch Instructions
 
 To start a local development server, run:
 

@@ -1,0 +1,27 @@
+<div class="product-card">
+  <a [routerLink]="'/products/' + product.id" class="product-image-container">
+    <img [src]="product.url" [alt]="product.name" />
+  </a>
+  
+  <div class="product-details">
+    <a [routerLink]="'/products/' + product.id" class="product-name-link">
+      <h3 class="product-name">{{ product.name }}</h3>
+    </a>
+    <p class="product-price">${{ product.price.toFixed(2) }}</p>
+    
+    <div class="quantity-section">
+      <label class="quantity-label" for="quantity-{{ product.id }}">Quantity:</label>
+      <select 
+        id="quantity-{{ product.id }}"
+        class="select-input" 
+        [(ngModel)]="selectedQuantity"
+        (ngModelChange)="onQuantityChange()">
+        <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" [value]="num">
+          {{ num }}
+        </option>
+      </select>
+    </div>
+
+    <button class="add-to-cart-btn" (click)="addToCart()">Add to Cart</button>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="checkout-container">
+  <div class="checkout-card">
+    <h2>Checkout</h2>
+    
+    <div class="order-summary">
+      <h3>Order Total: ${{ total.toFixed(2) }}</h3>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #checkoutForm="ngForm">
+      <div class="form-group">
+        <label for="fullName">Full Name <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="fullName" 
+          name="fullName"
+          [(ngModel)]="fullName"
+          required
+          minlength="3"
+          placeholder="Enter your full name"
+          #nameInput="ngModel"
+        />
+        <div class="error-message" *ngIf="nameInput.invalid && nameInput.touched">
+          <span *ngIf="nameInput.errors?.['required']">Full name is required</span>
+          <span *ngIf="nameInput.errors?.['minlength']">Full name must be at least 3 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address <span class="required">*</span></label>
+        <textarea 
+          id="address" 
+          name="address"
+          [(ngModel)]="address"
+          required
+          minlength="6"
+          rows="3"
+          placeholder="Enter your shipping address"
+          #addressInput="ngModel"
+        ></textarea>
+        <div class="error-message" *ngIf="addressInput.invalid && addressInput.touched">
+          <span *ngIf="addressInput.errors?.['required']">Address is required</span>
+          <span *ngIf="addressInput.errors?.['minlength']">Address must be at least 6 characters</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="creditCard">Credit Card Number <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="creditCard" 
+          name="creditCard"
+          [(ngModel)]="creditCard"
+          required
+          pattern="[0-9]{16}|[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}"
+          maxlength="19"
+          placeholder="1234 5678 9012 3456"
+          #cardInput="ngModel"
+        />
+        <div class="error-message" *ngIf="cardInput.invalid && cardInput.touched">
+          <span *ngIf="cardInput.errors?.['required']">Credit card is required</span>
+          <span *ngIf="cardInput.errors?.['pattern']">Credit card must be 16 digits</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button 
+          type="submit" 
+          class="submit-btn"
+          [disabled]="checkoutForm.invalid"
+        >
+          Complete Purchase
+        </button>
+        <a routerLink="/cart" routerLinkActive="active" class="cancel-link">Back to Cart</a>
+      </div>
+    </form>
+  </div>
+</div>

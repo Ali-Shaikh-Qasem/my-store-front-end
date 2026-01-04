@@ -1,0 +1,22 @@
+.product-container {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 100px);
+}
+
+.product-index {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .product-index {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+  }
+}
